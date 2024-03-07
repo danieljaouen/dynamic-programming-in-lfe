@@ -12,18 +12,21 @@
     n))
 
 (defun lowest-cost-path (g source sink)
-  (let ((in-edges (digraph:in_edges g sink)))
-    (if (== in-edges [])
-      (if (== source sink)
-        #(ok 0)
-        #(error "No path from source to sink")))
-    (lists:min
-     (lists:map (lambda (edge_with_cost)
-                  (let ((e (car edge_with_cost))
-                        (cost (cdr edge_with_cost)))
-                    (progn
-                      (lfe_io:format "edge: ~p~n" `(,e))
-                      (lfe_io:format "cost: ~p~n" `(,cost))
-                      (lfe_io:format "~n~n" '())
-                      5)))
-                in-edges))))
+  (if (== source sink)
+    (progn #(ok 0))
+    (let ((in-edges (digraph:in_edges g sink)))
+      (if (== in-edges [])
+        #(error "No path from source to sink")
+        (lists:min
+         (lists:filter (lambda (x) (/= (element 1 x) 'error))
+                       (lists:map
+                        (lambda (edge)
+                          (let (((tuple e v1 v2 cost-fn)
+                                 (digraph:edge g edge)))
+                            (progn
+                              (case (lowest-cost-path g source v1)
+                                ((tuple 'ok cost)
+                                 (tuple 'ok (+ cost (funcall cost-fn))))
+                                ((tuple 'error msg)
+                                 #(error msg))))))
+                        in-edges)))))))

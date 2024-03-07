@@ -14,4 +14,6 @@
          (e2 (digraph:add_edge g source v2 (dynamic-programming-in-lfe:make-cost-function 2)))
          (e3 (digraph:add_edge g v1 sink (dynamic-programming-in-lfe:make-cost-function 3)))
          (e4 (digraph:add_edge g v2 sink (dynamic-programming-in-lfe:make-cost-function 4))))
-    (io:format "~p~n" `(,(dynamic-programming-in-lfe:lowest-cost-path g source sink)))))
+    (case (dynamic-programming-in-lfe:lowest-cost-path g source sink)
+      ((tuple 'ok cost) (lfe_io:format "cost: ~p~n" `(,cost)))
+      ((tuple 'error msg) (lfe_io:format "error: ~p~n" `(,msg))))))
