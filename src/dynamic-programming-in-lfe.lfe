@@ -1,10 +1,15 @@
 (defmodule dynamic-programming-in-lfe
   (export
-   (my-fun 0)))
+   (lowest-cost-path 3)
+   (make-cost-function 1)))
 
 ;;; -----------
 ;;; library API
 ;;; -----------
 
-(defun my-fun ()
+(defun make-cost-function (n)
+  (lambda ()
+    n))
+
+(defun lowest-cost-path (g source sink)
   'hello-world)
