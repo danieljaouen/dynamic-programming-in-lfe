@@ -12,20 +12,22 @@
     n))
 
 (defun my-min (lst)
-  (lists:foldl
-   (lambda (x y)
-     (if (< (element 3 x) (element 3 y))
-       x
-       y))
-   (hd lst)
-   (tl lst)))
+  (if (== lst [])
+    #(error "No available path")
+    (lists:foldl
+     (lambda (x y)
+       (if (< (element 3 x) (element 3 y))
+         x
+         y))
+     (hd lst)
+     (tl lst))))
 
 (defun lowest-cost-path-helper (g source sink)
   (if (== source sink)
     (progn #(ok [] 0))
     (let ((in-edges (digraph:in_edges g sink)))
       (if (== in-edges [])
-        #(error "No path from source to sink")
+        (tuple 'error "No path from source to sink")
         (my-min
          (lists:filter (lambda (x) (/= (element 1 x) 'error))
                        (lists:map
@@ -41,7 +43,9 @@
                         in-edges)))))))
 
 (defun lowest-cost-path (g source sink)
-  (let ((result (lowest-cost-path-helper g source sink)))
-    (case (element 1 result)
-      ('ok (tuple 'ok `(,@(lists:reverse (element 2 result)) ,sink) (element 3 result)))
-      ('error (element 2 result)))))
+  (if (digraph_utils:is_acyclic g)
+    (let ((result (lowest-cost-path-helper g source sink)))
+      (case (element 1 result)
+        ('ok (tuple 'ok `(,@(lists:reverse (element 2 result)) ,sink) (element 3 result)))
+        ('error (tuple 'error (element 2 result)))))
+    (tuple 'error "Graph is not acyclic")))
