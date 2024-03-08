@@ -38,7 +38,7 @@ jobs:
       run: rebar3 as test lfe ltest -tall
 
   older-builds:
-    name: Old Erlang $ build
+    name: Old Erlang 21.3 build
     runs-on: ubuntu-20.04
 
     strategy:
