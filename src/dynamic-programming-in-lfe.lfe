@@ -13,7 +13,7 @@
 
 (defun my-min (lst)
   (if (== lst [])
-    #(error "No available path")
+    #(error "Empty list passed to my-min")
     (lists:foldl
      (lambda (x y)
        (if (< (element 3 x) (element 3 y))
@@ -47,5 +47,5 @@
     (let ((result (lowest-cost-path-helper g source sink)))
       (case (element 1 result)
         ('ok (tuple 'ok `(,@(lists:reverse (element 2 result)) ,sink) (element 3 result)))
-        ('error (tuple 'error (element 2 result)))))
+        ('error (tuple 'error "No path from source to sink"))))
     (tuple 'error "Graph is not acyclic")))
