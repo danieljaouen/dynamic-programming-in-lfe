@@ -1,5 +1,6 @@
 # dynamic-programming-in-lfe
 
+[![Build Status][gh-actions-badge]][gh-actions]
 [![LFE Versions][lfe-badge]][lfe]
 [![Erlang Versions][erlang-badge]][version]
 [![Tags][github-tags-badge]][github-tags]
@@ -13,6 +14,7 @@
 * [About](#about-)
 * [Build](#build-)
 * [Start the Project REPL](#start-the-repl-)
+* [Tests](#tests-)
 * [Usage](#usage-)
 * [License](#license-)
 
@@ -30,6 +32,12 @@ $ rebar3 lfe compile
 
 ```shell
 $ rebar3 lfe repl
+```
+
+# Tests [&#x219F;](#table-of-contents)
+
+```shell
+$ rebar3 as test lfe ltest
 ```
 
 ## Usage [&#x219F;](#table-of-contents)
