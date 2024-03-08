@@ -1,6 +1,5 @@
 # dynamic-programming-in-lfe
 
-[![Build Status][gh-actions-badge]][gh-actions]
 [![LFE Versions][lfe-badge]][lfe]
 [![Erlang Versions][erlang-badge]][version]
 [![Tags][github-tags-badge]][github-tags]
