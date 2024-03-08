@@ -20,7 +20,7 @@
 
 ## About [&#x219F;](#table-of-contents)
 
-TBD
+This is a small example of dynamic programming in LFE.
 
 ## Build [&#x219F;](#table-of-contents)
 
@@ -42,7 +42,9 @@ $ rebar3 as test lfe ltest
 
 ## Usage [&#x219F;](#table-of-contents)
 
-TBD
+```shell
+$ rebar3 lfe run
+```
 
 ## License [&#x219F;](#table-of-contents)
 
