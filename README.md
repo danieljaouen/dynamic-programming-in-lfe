@@ -1,5 +1,6 @@
 # dynamic-programming-in-lfe
 
+[![Build Status][gh-actions-badge]][gh-actions]
 [![LFE Versions][lfe-badge]][lfe]
 [![Erlang Versions][erlang-badge]][version]
 [![Tags][github-tags-badge]][github-tags]
@@ -55,14 +56,14 @@ Copyright © 2024, Daniel Jaouen <dcj24@cornell.edu>.
 
 [logo]: https://avatars1.githubusercontent.com/u/3434967?s=250
 [logo-large]: https://avatars1.githubusercontent.com/u/3434967
-[github]: https://github.com/ORG/dynamic-programming-in-lfe
-[gitlab]: https://gitlab.com/ORG/dynamic-programming-in-lfe
-[gh-actions-badge]: https://github.com/ORG/dynamic-programming-in-lfe/actions/workflows/cicd.yml/badge.svg
-[gh-actions]: https://github.com/ORG/dynamic-programming-in-lfe/actions/workflows/cicd.yml
+[github]: https://github.com/danieljaouen/dynamic-programming-in-lfe
+[gitlab]: https://gitlab.com/danieljaouen/dynamic-programming-in-lfe
+[gh-actions-badge]: https://github.com/danieljaouen/dynamic-programming-in-lfe/actions/workflows/cicd.yml/badge.svg
+[gh-actions]: https://github.com/danieljaouen/dynamic-programming-in-lfe/actions/workflows/cicd.yml
 [lfe]: https://github.com/lfe/lfe
 [lfe-badge]: https://img.shields.io/badge/lfe-2.1-blue.svg
 [erlang-badge]: https://img.shields.io/badge/erlang-21%20to%2026-blue.svg
-[version]: https://github.com/ORG/dynamic-programming-in-lfe/blob/main/.github/workflows/cicd.yml
-[github-tags]: https://github.com/ORG/dynamic-programming-in-lfe/tags
-[github-tags-badge]: https://img.shields.io/github/tag/ORG/dynamic-programming-in-lfe.svg
-[github-downloads]: https://img.shields.io/github/downloads/ORG/dynamic-programming-in-lfe/total.svg
+[version]: https://github.com/danieljaouen/dynamic-programming-in-lfe/blob/main/.github/workflows/cicd.yml
+[github-tags]: https://github.com/danieljaouen/dynamic-programming-in-lfe/tags
+[github-tags-badge]: https://img.shields.io/github/tag/danieljaouen/dynamic-programming-in-lfe.svg
+[github-downloads]: https://img.shields.io/github/downloads/danieljaouen/dynamic-programming-in-lfe/total.svg
