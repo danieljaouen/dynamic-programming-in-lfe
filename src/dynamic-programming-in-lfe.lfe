@@ -24,7 +24,7 @@
 
 (defun lowest-cost-path-helper (g source sink)
   (if (== source sink)
-    (progn #(ok [] 0))
+    #(ok [] 0)
     (let ((in-edges (digraph:in_edges g sink)))
       (if (== in-edges [])
         (tuple 'error "No path from source to sink")
@@ -36,8 +36,8 @@
                                  (digraph:edge g edge)))
                             (progn
                               (case (lowest-cost-path-helper g source v1)
-                                ((tuple 'ok reversed-path cost)
-                                 (tuple 'ok `(,v1 ,@reversed-path) (+ cost (funcall cost-fn))))
+                                ((tuple 'ok backwards-path cost)
+                                 (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
                                 ((tuple 'error msg)
                                  (tuple 'error msg))))))
                         in-edges)))))))
