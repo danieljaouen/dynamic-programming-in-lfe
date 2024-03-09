@@ -34,12 +34,11 @@
                         (lambda (edge)
                           (let (((tuple e v1 v2 cost-fn)
                                  (digraph:edge g edge)))
-                            (progn
-                              (case (lowest-cost-path-helper g source v1)
-                                ((tuple 'ok backwards-path cost)
-                                 (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
-                                ((tuple 'error msg)
-                                 (tuple 'error msg))))))
+                            (case (lowest-cost-path-helper g source v1)
+                              ((tuple 'ok backwards-path cost)
+                               (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
+                              ((tuple 'error msg)
+                               (tuple 'error msg)))))
                         in-edges)))))))
 
 (defun lowest-cost-path (g source sink)
