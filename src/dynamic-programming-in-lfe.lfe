@@ -3,6 +3,8 @@
    (lowest-cost-path 3)
    (make-cost-function 1)))
 
+(include-lib "lfe/include/clj.lfe")
+
 ;;; -----------
 ;;; library API
 ;;; -----------
@@ -28,18 +30,18 @@
     (let ((in-edges (digraph:in_edges g sink)))
       (if (== in-edges [])
         (tuple 'error "No path from source to sink")
-        (my-min
-         (lists:filter (lambda (x) (/= (element 1 x) 'error))
-                       (lists:map
-                        (lambda (edge)
-                          (let (((tuple e v1 v2 cost-fn)
-                                 (digraph:edge g edge)))
-                            (case (lowest-cost-path-helper g source v1)
-                              ((tuple 'ok backwards-path cost)
-                               (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
-                              ((tuple 'error msg)
-                               (tuple 'error msg)))))
-                        in-edges)))))))
+        (clj:->> in-edges
+                 (lists:map
+                  (lambda (edge)
+                    (let (((tuple e v1 v2 cost-fn)
+                           (digraph:edge g edge)))
+                      (case (lowest-cost-path-helper g source v1)
+                        ((tuple 'ok backwards-path cost)
+                         (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
+                        ((tuple 'error msg)
+                         (tuple 'error msg))))))
+                 (lists:filter (lambda (x) (/= (element 1 x) 'error)))
+                 (my-min))))))
 
 (defun lowest-cost-path (g source sink)
   (if (digraph_utils:is_acyclic g)
