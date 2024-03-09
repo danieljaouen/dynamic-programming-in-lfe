@@ -24,6 +24,15 @@
      (hd lst)
      (tl lst))))
 
+(defun calculate-current-path (g source edge)
+  (let (((tuple e v1 v2 cost-fn)
+         (digraph:edge g edge)))
+    (case (lowest-cost-path-helper g source v1)
+      ((tuple 'ok backwards-path cost)
+       (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
+      ((tuple 'error msg)
+       (tuple 'error msg)))))
+
 (defun lowest-cost-path-helper (g source sink)
   (if (== source sink)
     #(ok [] 0)
@@ -31,15 +40,7 @@
       (if (== in-edges [])
         (tuple 'error "No path from source to sink")
         (clj:->> in-edges
-                 (lists:map
-                  (lambda (edge)
-                    (let (((tuple e v1 v2 cost-fn)
-                           (digraph:edge g edge)))
-                      (case (lowest-cost-path-helper g source v1)
-                        ((tuple 'ok backwards-path cost)
-                         (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
-                        ((tuple 'error msg)
-                         (tuple 'error msg))))))
+                 (lists:map (lambda (edge) (calculate-current-path g source edge)))
                  (lists:filter (lambda (x) (/= (element 1 x) 'error)))
                  (my-min))))))
 
