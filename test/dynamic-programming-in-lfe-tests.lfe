@@ -4,7 +4,7 @@
 
 (include-lib "ltest/include/ltest-macros.lfe")
 
-(deftest unit-lowest-cost-path-helper
+(deftest unit-lowest-cost-path
   (is-equal
    (let* ((g (digraph:new))
           (source (digraph:add_vertex g 'source))
