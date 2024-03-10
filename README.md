@@ -13,10 +13,10 @@
 
 * [About](#about-)
 * [Build](#build-)
-* [Start the Project REPL](#start-the-repl-)
+* [Start the Project REPL](#start-the-project-repl-)
 * [Tests](#tests-)
 * [Usage](#usage-)
-* [Elixir Version](#Eelixir-version-)
+* [Elixir Version](#elixir-version-)
 * [License](#license-)
 
 ## About [&#x219F;](#table-of-contents)
