@@ -39,7 +39,7 @@
         (tuple 'error "Cannot reach source from current path")
         (clj:->> in-edges
                  (lists:map (lambda (edge) (calculate-current-path g source edge)))
-                 (lists:filter (lambda (x) (/= (element 1 x) 'error)))
+                 (lists:filter (lambda (x) (== (element 1 x) 'ok)))
                  (my-min))))))
 
 (defun lowest-cost-path (g source sink)
