@@ -48,7 +48,7 @@ $ rebar3 lfe run
 ```
 
 ## Elixir Version [&#x219F;](#table-of-contents)
-[Here.](https://github.com/danieljaouen/dynamic-programming-in-elixir/tree/main)
+[Here.](https://github.com/danieljaouen/dynamic-programming-in-elixir)
 
 ## License [&#x219F;](#table-of-contents)
 
