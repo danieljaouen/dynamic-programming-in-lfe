@@ -1,4 +1,4 @@
-# dynamic-programming-in-lfe
+# Dynamic Programming In LFE
 
 [![Build Status][gh-actions-badge]][gh-actions]
 [![LFE Versions][lfe-badge]][lfe]
