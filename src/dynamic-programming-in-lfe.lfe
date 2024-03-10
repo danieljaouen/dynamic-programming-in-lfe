@@ -9,9 +9,7 @@
 ;;; library API
 ;;; -----------
 
-(defun make-cost-function (n)
-  (lambda ()
-    n))
+(defun make-cost-function (n) (lambda () n))
 
 (defun my-min (lst)
   (if (== lst [])
