@@ -27,13 +27,13 @@
          (digraph:edge g edge)))
     (case (lowest-cost-path-helper g source v1)
       ((tuple 'ok path cost)
-       (tuple 'ok `(,@path ,v1) (+ cost (funcall cost-fn))))
+       (tuple 'ok `(,@path ,v2) (+ cost (funcall cost-fn))))
       ((tuple 'error msg)
        (tuple 'error msg)))))
 
 (defun lowest-cost-path-helper (g source sink)
   (if (== source sink)
-    #(ok [] 0)
+    (tuple 'ok (list source) 0)
     (let ((in-edges (digraph:in_edges g sink)))
       (if (== in-edges [])
         (tuple 'error "No path from source to sink")
@@ -48,6 +48,6 @@
     (let ((result (lowest-cost-path-helper g source sink)))
       (case result
         ((tuple 'ok path cost)
-         (tuple 'ok `(,@path ,sink) cost))
+         (tuple 'ok path cost))
         ((tuple 'error msg)
          (tuple 'error "No path from source to sink"))))))
