@@ -28,8 +28,8 @@
   (let (((tuple e v1 v2 cost-fn)
          (digraph:edge g edge)))
     (case (lowest-cost-path-helper g source v1)
-      ((tuple 'ok backwards-path cost)
-       (tuple 'ok `(,v1 ,@backwards-path) (+ cost (funcall cost-fn))))
+      ((tuple 'ok path cost)
+       (tuple 'ok `(,@path ,v1) (+ cost (funcall cost-fn))))
       ((tuple 'error msg)
        (tuple 'error msg)))))
 
@@ -48,6 +48,6 @@
   (if (digraph_utils:is_acyclic g)
     (let ((result (lowest-cost-path-helper g source sink)))
       (case (element 1 result)
-        ('ok (tuple 'ok `(,@(lists:reverse (element 2 result)) ,sink) (element 3 result)))
+        ('ok (tuple 'ok `(,@(element 2 result) ,sink) (element 3 result)))
         ('error (tuple 'error "No path from source to sink"))))
     (tuple 'error "Graph is not acyclic")))
