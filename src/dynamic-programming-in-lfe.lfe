@@ -36,7 +36,7 @@
     (tuple 'ok (list source) 0)
     (let ((in-edges (digraph:in_edges g sink)))
       (if (== in-edges [])
-        (tuple 'error "No path from source to sink")
+        (tuple 'error "Cannot reach source from current path")
         (clj:->> in-edges
                  (lists:map (lambda (edge) (calculate-current-path g source edge)))
                  (lists:filter (lambda (x) (/= (element 1 x) 'error)))
