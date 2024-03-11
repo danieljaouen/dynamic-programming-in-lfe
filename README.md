@@ -47,7 +47,7 @@ $ rebar3 as test lfe ltest
 $ rebar3 lfe run
 ```
 
-## Elixir version [&#x219F;](#table-of-contents)
+## Elixir Version [&#x219F;](#table-of-contents)
 [Here.](https://github.com/danieljaouen/dynamic-programming-in-elixir)
 
 Note: The Elixir version is currently more performant due to parallel processing.
